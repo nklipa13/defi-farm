@@ -1,13 +1,17 @@
 pragma solidity >=0.4.21 <0.7.0;
 
+import "./DefiNFTInterface.sol";
+
 contract DefiFarm {
     
     struct DefiNFT {
         address tokenAddress;
         uint price;
-        address tokenMaker;
+        address payable tokenMaker;
         bool exists;
     }
+
+    uint public USER_SHARE;
 
     uint public count;
 
@@ -31,7 +35,7 @@ contract DefiFarm {
         count++;
     }
 
-    function buyToken(uint _tokenId) public payable {
+    function buyToken(uint _tokenId, uint _value) public payable {
         uint tokenPrice = tokens[_tokenId].price;
         require(msg.value >= tokenPrice);
         require(tokens[_tokenId].exists);
@@ -40,11 +44,21 @@ contract DefiFarm {
             msg.sender.transfer(msg.value - tokenPrice);
         }
 
+        address payable tokenMaker = tokens[_tokenId].tokenMaker;
+        tokenMaker.transfer(tokenPrice * USER_SHARE / 100);
+
         // TODO: mint token
+        require(DefiNFTInterface(tokens[_tokenId].tokenAddress).mintDefiNFT(msg.sender, _value));
     }
 
     // TODO: only dao
     function removeToken(uint _id) public {
         tokens[_id].exists = false;
     }
+
+    // TODO: only dao
+    function changeMakerShare(uint _share) public {
+        USER_SHARE = _share;
+    }
+
 }

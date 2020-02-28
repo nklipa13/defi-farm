@@ -11,6 +11,10 @@
         {
           "name": "_value",
           "type": "uint256"
+        },
+        {
+          "name": "_name",
+          "type": "string"
         }
       ],
       "name": "mintDefiNFT",
@@ -25,25 +29,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_user\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"mintDefiNFT\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":\"DefiNFTInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":{\"keccak256\":\"0xbbf706499903273d213b26c8af853b68c37a4044df62e547dde098c74f0f19e7\",\"urls\":[\"bzzr://6e2972a69abf8f79e88224db20d403ba78a3bc5cde302b79c2d83445da1c9ccb\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_user\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"mintDefiNFT\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":\"DefiNFTInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":{\"keccak256\":\"0xdc3bcb5cb11105dce84b3611455e3104c86e3fd800a0ec692fc1a82b70938f43\",\"urls\":[\"bzzr://7a002fb8189a0f0aab7356e69d8fa0b0ea3ac7dd98eaa35dc314cee4e1a7b246\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.0;\n\ninterface DefiNFTInterface {\n    function mintDefiNFT(address _user, uint _value) external returns(bool);\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\ninterface DefiNFTInterface {\n    function mintDefiNFT(address _user, uint _value, string calldata _name) external returns(bool);\n}\n",
   "sourcePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
   "ast": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        179
+        184
       ]
     },
-    "id": 180,
+    "id": 185,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 169,
+        "id": 172,
         "literals": [
           "solidity",
           "^",
@@ -59,9 +63,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 179,
+        "id": 184,
         "linearizedBaseContracts": [
-          179
+          184
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -69,22 +73,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 178,
+            "id": 183,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 174,
+              "id": 179,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 171,
+                  "id": 174,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
+                  "scope": 183,
                   "src": "79:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -93,7 +97,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 170,
+                    "id": 173,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "79:7:1",
@@ -108,10 +112,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 173,
+                  "id": 176,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
+                  "scope": 183,
                   "src": "94:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -120,7 +124,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 172,
+                    "id": 175,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "94:4:1",
@@ -131,21 +135,47 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 178,
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 183,
+                  "src": "107:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 177,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "78:28:1"
+              "src": "78:51:1"
             },
             "returnParameters": {
-              "id": 177,
+              "id": 182,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 176,
+                  "id": 181,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
-                  "src": "124:4:1",
+                  "scope": 183,
+                  "src": "147:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -153,10 +183,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 175,
+                    "id": 180,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "124:4:1",
+                    "src": "147:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -166,33 +196,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "123:6:1"
+              "src": "146:6:1"
             },
-            "scope": 179,
-            "src": "58:72:1",
+            "scope": 184,
+            "src": "58:95:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 180,
-        "src": "25:107:1"
+        "scope": 185,
+        "src": "25:130:1"
       }
     ],
-    "src": "0:133:1"
+    "src": "0:156:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        179
+        184
       ]
     },
-    "id": 180,
+    "id": 185,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 169,
+        "id": 172,
         "literals": [
           "solidity",
           "^",
@@ -208,9 +238,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 179,
+        "id": 184,
         "linearizedBaseContracts": [
-          179
+          184
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -218,22 +248,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 178,
+            "id": 183,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 174,
+              "id": 179,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 171,
+                  "id": 174,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
+                  "scope": 183,
                   "src": "79:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -242,7 +272,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 170,
+                    "id": 173,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "79:7:1",
@@ -257,10 +287,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 173,
+                  "id": 176,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
+                  "scope": 183,
                   "src": "94:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -269,7 +299,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 172,
+                    "id": 175,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "94:4:1",
@@ -280,21 +310,47 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 178,
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 183,
+                  "src": "107:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 177,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "78:28:1"
+              "src": "78:51:1"
             },
             "returnParameters": {
-              "id": 177,
+              "id": 182,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 176,
+                  "id": 181,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 178,
-                  "src": "124:4:1",
+                  "scope": 183,
+                  "src": "147:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -302,10 +358,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 175,
+                    "id": 180,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "124:4:1",
+                    "src": "147:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -315,20 +371,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "123:6:1"
+              "src": "146:6:1"
             },
-            "scope": 179,
-            "src": "58:72:1",
+            "scope": 184,
+            "src": "58:95:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 180,
-        "src": "25:107:1"
+        "scope": 185,
+        "src": "25:130:1"
       }
     ],
-    "src": "0:133:1"
+    "src": "0:156:1"
   },
   "compiler": {
     "name": "solc",
@@ -336,7 +392,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-28T21:27:52.920Z",
+  "updatedAt": "2020-02-28T21:40:07.299Z",
   "devdoc": {
     "methods": {}
   },

@@ -35,7 +35,7 @@ contract DefiFarm {
         count++;
     }
 
-    function buyToken(uint _tokenId, uint _value) public payable {
+    function buyToken(uint _tokenId, uint _value, string memory _name) public payable {
         uint tokenPrice = tokens[_tokenId].price;
         require(msg.value >= tokenPrice);
         require(tokens[_tokenId].exists);
@@ -48,7 +48,7 @@ contract DefiFarm {
         tokenMaker.transfer(tokenPrice * USER_SHARE / 100);
 
         // TODO: mint token
-        require(DefiNFTInterface(tokens[_tokenId].tokenAddress).mintDefiNFT(msg.sender, _value));
+        require(DefiNFTInterface(tokens[_tokenId].tokenAddress).mintDefiNFT(msg.sender, _value, _name));
     }
 
     // TODO: only dao

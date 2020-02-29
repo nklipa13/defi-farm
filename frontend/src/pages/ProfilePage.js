@@ -7,6 +7,11 @@ import { NFT } from '../config.json';
 import monster1Img from '../images/monster1.png';
 import monster2Img from '../images/monster2.png';
 
+import "./ProfilePage.css";
+import "./HomePage.css";
+
+import { Link } from 'react-router-dom'
+
 class ProfilePage extends Component {
 
     constructor(je) {
@@ -48,7 +53,8 @@ class ProfilePage extends Component {
 
             m1Animals.push({
                 name: tokenData[0],
-                amount: tokenData[1]
+                amount: tokenData[1],
+                tokenId: ownerTokensM1[i]
             });
           }
 
@@ -68,22 +74,42 @@ class ProfilePage extends Component {
             console.log(err);
         }
     }
+
+    async burn(tokenId) {
+
+        const { account, nft1Contract } = this.state;
+
+        await nft1Contract.methods.burn(tokenId).send({ from: account });
+    }
   
     render() {
 
         const { m1Animals } = this.state;
 
         return (
-            <div>
-                {
-                    m1Animals.map((animal, i) => (
-                        <div key={i}>
-                            <img src={monster1Img} alt="monster1" width="300" height="390" />
-                            <div> {animal.name }</div>
-                            <div> {animal.amount / 1e18} Dai</div>
-                        </div>
-                    ))
-                }
+            <div className="container-flex">
+                <div className="page-layout">
+                    <div className="title-section">
+                        <div className="title-text">Defi Farm</div>
+                        <Link to='/' className="profile-link"> Back </Link>
+                    </div>
+                    <div className="profile-layout">
+                        {
+                            m1Animals.map((animal, i) => (
+                                <div key={i} className="monster-container">
+                                    <img src={monster1Img} alt="monster1" width="300" height="390" />
+                                    <div className='monster-info'>
+                                        <div>Name:</div>
+                                        <div className="info-text"> {animal.name }</div>
+                                        <div>Value:</div>
+                                        <div className="info-text"> {(animal.amount / 1e18).toFixed(4)} Dai</div>
+                                        <button type="button" className="buy-btn" onClick={() => this.burn(animal.tokenId)}>Burn</button>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         );
     }

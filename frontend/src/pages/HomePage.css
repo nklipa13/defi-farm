@@ -37,9 +37,9 @@ body {
     margin: 20px 0px 20px 0px;
 }
 
-/* .profile-link {
-    align-content: flex-end;
-} */
+.profile-link {
+    margin-right: 50px;
+}
 
 .title-text {
     font-family: HK Grotesk B;

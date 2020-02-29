@@ -42,7 +42,12 @@ class Monster extends Component {
         await contract.methods.buyToken(tokenId, weiValue, name).send({
             from: account,
             value: tokenInfo.price
-        })
+        });
+
+        this.setState({
+            name: '',
+            value: 0
+        });
     }
 
     handleChange(e) {
@@ -76,7 +81,7 @@ class Monster extends Component {
                         className="form-input"
                         name="value"
                         onChange={this.handleChange}
-                        placeholder="Name"
+                        placeholder="Dai Amount"
                         value={value}
                     />
                 </div>

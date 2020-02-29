@@ -59,14 +59,14 @@
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        191
+        197
       ]
     },
-    "id": 192,
+    "id": 198,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 172,
+        "id": 178,
         "literals": [
           "solidity",
           "^",
@@ -82,9 +82,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 191,
+        "id": 197,
         "linearizedBaseContracts": [
-          191
+          197
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -92,22 +92,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 183,
+            "id": 189,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 179,
+              "id": 185,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 174,
+                  "id": 180,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "80:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -116,7 +116,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 173,
+                    "id": 179,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "80:7:1",
@@ -131,10 +131,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 176,
+                  "id": 182,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "95:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -143,7 +143,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 175,
+                    "id": 181,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "95:4:1",
@@ -157,10 +157,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 178,
+                  "id": 184,
                   "name": "_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "108:21:1",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -169,7 +169,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 177,
+                    "id": 183,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "108:6:1",
@@ -185,15 +185,15 @@
               "src": "79:51:1"
             },
             "returnParameters": {
-              "id": 182,
+              "id": 188,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 181,
+                  "id": 187,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "148:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -202,7 +202,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 180,
+                    "id": 186,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "148:4:1",
@@ -217,7 +217,7 @@
               ],
               "src": "147:6:1"
             },
-            "scope": 191,
+            "scope": 197,
             "src": "59:95:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -226,22 +226,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 190,
+            "id": 196,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getName",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 186,
+              "id": 192,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 185,
+                  "id": 191,
                   "name": "_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 190,
+                  "scope": 196,
                   "src": "176:8:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -250,7 +250,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 184,
+                    "id": 190,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "176:4:1",
@@ -266,15 +266,15 @@
               "src": "175:10:1"
             },
             "returnParameters": {
-              "id": 189,
+              "id": 195,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 188,
+                  "id": 194,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 190,
+                  "scope": 196,
                   "src": "208:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -283,7 +283,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 187,
+                    "id": 193,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "208:6:1",
@@ -298,14 +298,14 @@
               ],
               "src": "207:15:1"
             },
-            "scope": 191,
+            "scope": 197,
             "src": "159:64:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 192,
+        "scope": 198,
         "src": "25:200:1"
       }
     ],
@@ -315,14 +315,14 @@
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        191
+        197
       ]
     },
-    "id": 192,
+    "id": 198,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 172,
+        "id": 178,
         "literals": [
           "solidity",
           "^",
@@ -338,9 +338,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 191,
+        "id": 197,
         "linearizedBaseContracts": [
-          191
+          197
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -348,22 +348,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 183,
+            "id": 189,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 179,
+              "id": 185,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 174,
+                  "id": 180,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "80:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -372,7 +372,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 173,
+                    "id": 179,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "80:7:1",
@@ -387,10 +387,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 176,
+                  "id": 182,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "95:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -399,7 +399,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 175,
+                    "id": 181,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "95:4:1",
@@ -413,10 +413,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 178,
+                  "id": 184,
                   "name": "_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "108:21:1",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -425,7 +425,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 177,
+                    "id": 183,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "108:6:1",
@@ -441,15 +441,15 @@
               "src": "79:51:1"
             },
             "returnParameters": {
-              "id": 182,
+              "id": 188,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 181,
+                  "id": 187,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 183,
+                  "scope": 189,
                   "src": "148:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -458,7 +458,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 180,
+                    "id": 186,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "148:4:1",
@@ -473,7 +473,7 @@
               ],
               "src": "147:6:1"
             },
-            "scope": 191,
+            "scope": 197,
             "src": "59:95:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -482,22 +482,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 190,
+            "id": 196,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getName",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 186,
+              "id": 192,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 185,
+                  "id": 191,
                   "name": "_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 190,
+                  "scope": 196,
                   "src": "176:8:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -506,7 +506,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 184,
+                    "id": 190,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "176:4:1",
@@ -522,15 +522,15 @@
               "src": "175:10:1"
             },
             "returnParameters": {
-              "id": 189,
+              "id": 195,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 188,
+                  "id": 194,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 190,
+                  "scope": 196,
                   "src": "208:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -539,7 +539,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 187,
+                    "id": 193,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "208:6:1",
@@ -554,14 +554,14 @@
               ],
               "src": "207:15:1"
             },
-            "scope": 191,
+            "scope": 197,
             "src": "159:64:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 192,
+        "scope": 198,
         "src": "25:200:1"
       }
     ],
@@ -573,7 +573,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-28T21:49:35.137Z",
+  "updatedAt": "2020-02-29T11:04:19.548Z",
   "devdoc": {
     "methods": {}
   },

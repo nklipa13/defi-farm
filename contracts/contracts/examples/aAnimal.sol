@@ -1,13 +1,32 @@
 pragma solidity ^0.5.0;
 
 import "../DefiNFTInterface.sol";
+import "./AaveLendingPoolInterface.sol";
+import "./aTokenInterface.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721Burnable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract aAnimal is ERC721Full, ERC721Burnable, DefiNFTInterface {
+contract aAnimal is ERC721Full, DefiNFTInterface {
+    // mainnet
+    // address public constant DAI_ADDRESS = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
+    // address public constant ADAI_ADDRESS = 0xfC1E690f61EFd961294b3e1Ce3313fBD8aa4f85d;
+    // address public constant AAVE_LENDING_POOL = 0x398eC7346DcD622eDc5ae82352F02bE94C62d119;
+    // address public constant AAVE_LENDING_POOL_CORE = 0x3dfd23A6c5E8BbcFc9581d2E864a68feb6a076d3;
+
+    // kovan
+    address public constant DAI_ADDRESS = 0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD;
+    address public constant ADAI_ADDRESS = 0x58AD4cB396411B691A9AAb6F74545b2C5217FE6a;
+    address public constant AAVE_LENDING_POOL = 0x580D4Fdc4BF8f9b5ae2fb9225D584fED4AD5375c;
+    address public constant AAVE_LENDING_POOL_CORE = 0x95D1189Ed88B380E319dF73fF00E479fcc4CFa45;
+
+    address public farm;
+
     mapping(uint => string) public names;
+    mapping(uint => uint) public amounts;
     
-    constructor () public ERC721Full('aAnimal', 'AAN') { }
+    constructor (address _farm) public ERC721Full('aAnimal', 'AAN') { 
+        farm = _farm;
+    }
 
     function exists(uint256 tokenId) public view returns (bool) {
         return _exists(tokenId);
@@ -17,19 +36,41 @@ contract aAnimal is ERC721Full, ERC721Burnable, DefiNFTInterface {
         return _tokensOfOwner(owner);
     }
 
-    function setTokenURI(uint256 tokenId, string memory uri) public {
-        _setTokenURI(tokenId, uri);
-    }
-
     function mintDefiNFT(address _user, uint _value, string calldata _name) external returns(bool) {
+        require(msg.sender == farm);
+        
         uint tokenId = totalSupply();
         
         _mint(_user, tokenId);
 
+        require(IERC20(DAI_ADDRESS).transferFrom(farm, address(this), _value));
+        IERC20(DAI_ADDRESS).approve(AAVE_LENDING_POOL_CORE, _value);
+
+        uint tokensBefore = IERC20(ADAI_ADDRESS).balanceOf(address(this));
+
+        AaveLendingPoolInterface(AAVE_LENDING_POOL).deposit(DAI_ADDRESS, _value, 0);
+
+        uint diff = IERC20(ADAI_ADDRESS).balanceOf(address(this)) - tokensBefore;
+
+        amounts[tokenId] = diff;
         names[tokenId] = _name;
+
+        return true;
     }
 
     function getName(uint _id) external view returns(string memory) {
         return names[_id];
+    }
+
+    function burn(uint256 tokenId) public {
+        require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721Burnable: caller is not owner nor approved");
+
+        uint tokensBefore = IERC20(DAI_ADDRESS).balanceOf(address(this));
+        aTokenInterface(ADAI_ADDRESS).redeem(amounts[tokenId]);
+        uint diff = IERC20(DAI_ADDRESS).balanceOf(address(this)) - tokensBefore;
+
+        IERC20(DAI_ADDRESS).transfer(_msgSender(), diff);
+
+        _burn(tokenId);
     }
 }

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: HK Grotesk B;
+    src: url(../fonts/HKGrotesk-Bold.otf);
+  }
 
 
 .img-container {
@@ -61,8 +65,22 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
+    width: 550px;
 
     margin: 20px 0px 20px 0px;
 
     color: #B9B9B9;
+}
+
+.asset-name {
+    font-family: HK Grotesk B;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 156.8%;
+    /* or 24px */
+
+    letter-spacing: 0.01em;
+
+    color: #000000;
 }

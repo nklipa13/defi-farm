@@ -68,7 +68,7 @@ class HomePage extends Component {
                     </div>
 
                     <div className='description-section'>
-                        Defi Farm - NFTs that work for you and help you manage your Defi positions, give someone bla gfd gdfkgndfng
+                        Your virtual pets that work for you and will die to save your defi positions!
                     </div>
 
                     <div className="body-section">
@@ -79,6 +79,7 @@ class HomePage extends Component {
                                 contract={defiFarmContract} 
                                 account={account}
                                 daiContract={daiContract}
+                                inputPlaceholder="Amount Dai"
                                 >
                             </Monster>
                         </div>
@@ -90,6 +91,7 @@ class HomePage extends Component {
                                 contract={defiFarmContract} 
                                 account={account}
                                 daiContract={daiContract}
+                                inputPlaceholder="Amount Eth"
                             >
                             </Monster>
                         </div>

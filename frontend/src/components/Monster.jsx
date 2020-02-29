@@ -9,7 +9,7 @@ class Monster extends Component {
 
         this.state = {
             name: '',
-            value: 0
+            value: 'Amount Eth'
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,18 +31,31 @@ class Monster extends Component {
         const { tokenId, contract, account } = this.props;
         const { name, value } = this.state;
 
-        await this.checkAllowance(value);
+        if (tokenId === "0") {
+            await this.checkAllowance(value);
+        }
 
         const tokenInfo = await contract.methods.tokens(tokenId).call();
 
-        console.log('Buy: ', tokenInfo);
+        console.log('Buy: ', tokenInfo.price);
+
+        const ethAmount = parseFloat(value) + parseFloat(tokenInfo.price / 1e18);
+
+        console.log(ethAmount);
 
         const weiValue = (value * 1e18).toString();
 
-        await contract.methods.buyToken(tokenId, weiValue, name).send({
-            from: account,
-            value: tokenInfo.price
-        });
+        if (tokenId === "0") {
+            await contract.methods.buyToken(tokenId, weiValue, name).send({
+                from: account,
+                value: tokenInfo.price
+            });
+        } else {
+            await contract.methods.buyToken(tokenId, weiValue, name).send({
+                from: account,
+                value: (ethAmount * 1e18).toString()
+            });
+        }
 
         this.setState({
             name: '',
@@ -58,7 +71,7 @@ class Monster extends Component {
 
     render() {
         const { name, value } = this.state;
-        const { img } = this.props;
+        const { img, inputPlaceholder, tokenId } = this.props;
 
         return (
             <div>
@@ -81,15 +94,26 @@ class Monster extends Component {
                         className="form-input"
                         name="value"
                         onChange={this.handleChange}
-                        placeholder="Dai Amount"
+                        placeholder={inputPlaceholder}
                         value={value}
                     />
                 </div>
 
-                <div className="monster-desc">
-                    Eum ea recusandae ducimus. Repellendus occaecati beatae sunt impedit ducimus. Dolores natus et alias.
-                    Sed velit non pariatur vel aut consequatur aut ut.
-                </div>
+                {
+                    tokenId === "0" && 
+                    <div className="monster-desc">
+                        <span className="asset-name">aSavers</span> - A type of NFT that will eat your Dai and store in their belly.
+                        This will earn you pasive interest over time which you can exit at anytime by sacrificing your aSaver.
+                    </div>
+                }
+
+                {
+                    tokenId === "1" && 
+                    <div className="monster-desc">
+                        <span className="asset-name">aTraders</span> - A type of NFT that will eat your Eth and all in, with a leverage!
+                        This is a really risky animal that might be killed in the price crashed but can earn you money quickly!
+                    </div>
+                }
 
                 <button type="button" className="buy-btn" onClick={() => this.buy()}>Buy</button>
             </div>

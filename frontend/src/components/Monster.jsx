@@ -110,8 +110,8 @@ class Monster extends Component {
                 {
                     tokenId === "1" && 
                     <div className="monster-desc">
-                        <span className="asset-name">aTraders</span> - A type of NFT that will eat your Eth and all in, with a leverage!
-                        This is a really risky animal that might be killed in the price crashed but can earn you money quickly!
+                        <span className="asset-name">aTraders</span> - A type of NFT that will eat your Eth and go all in, with a leverage!
+                        This is a really risky animal that might get killed in the price crashed but can earn you money quickly!
                     </div>
                 }
 

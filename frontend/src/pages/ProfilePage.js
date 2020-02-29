@@ -36,8 +36,8 @@ class ProfilePage extends Component {
           const accounts = await web3.eth.getAccounts();
           const networkId = await web3.eth.net.getId();
 
-          const nft1Addr = "0xBD3B64D13f4c87A5146EbFe6AAbd857B96686376";
-          const nft2Addr = '0x90443A2c797BEF238aba6f94de716267faa904ba';
+          const nft1Addr = "0x45F2B14baAF31Ce314345C1090c18df203957091";
+          const nft2Addr = '0x4eDaa5bafe4972eBa812bF6ddcbC9Eb12b035b16';
 
           const nft1Contract = new web3.eth.Contract(NFT.abi, nft1Addr);
           const nft2Contract = new web3.eth.Contract(NFT.abi, nft2Addr);
@@ -55,6 +55,17 @@ class ProfilePage extends Component {
                 name: tokenData[0],
                 amount: tokenData[1],
                 tokenId: ownerTokensM1[i]
+            });
+          }
+
+          for (let i = 0; i < ownerTokensM2.length; ++i) {
+            // const tokenData = await nft2Contract.methods.getTokenData(ownerTokensM2[i]).call();
+
+            m2Animals.push({
+                name: 'Klipa',
+                amountEth: '10000000000000000000',
+                amountDai: '10000000000000000000',
+                tokenId: ownerTokensM2[i]
             });
           }
 
@@ -84,7 +95,7 @@ class ProfilePage extends Component {
   
     render() {
 
-        const { m1Animals } = this.state;
+        const { m1Animals, m2Animals } = this.state;
 
         return (
             <div className="container-flex">
@@ -102,6 +113,23 @@ class ProfilePage extends Component {
                                         <div>Name:</div>
                                         <div className="info-text"> {animal.name }</div>
                                         <div>Value:</div>
+                                        <div className="info-text"> {(animal.amount / 1e18).toFixed(4)} Dai</div>
+                                        <button type="button" className="buy-btn" onClick={() => this.burn(animal.tokenId)}>Burn</button>
+                                    </div>
+                                </div>
+                            ))
+                        }
+
+{
+                            m2Animals.map((animal, i) => (
+                                <div key={i} className="monster-container">
+                                    <img src={monster1Img} alt="monster2" width="300" height="390" />
+                                    <div className='monster-info'>
+                                        <div>Name:</div>
+                                        <div className="info-text"> {animal.name }</div>
+                                        <div>Eth Value:</div>
+                                        <div className="info-text"> {(animal.amount / 1e18).toFixed(4)} Eth</div>
+                                        <div>Dai debt:</div>
                                         <div className="info-text"> {(animal.amount / 1e18).toFixed(4)} Dai</div>
                                         <button type="button" className="buy-btn" onClick={() => this.burn(animal.tokenId)}>Burn</button>
                                     </div>

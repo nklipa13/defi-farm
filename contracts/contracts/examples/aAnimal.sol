@@ -5,6 +5,7 @@ import "./AaveLendingPoolInterface.sol";
 import "./aTokenInterface.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./FundsKeeper.sol";
 
 contract aAnimal is ERC721Full, DefiNFTInterface {
     // mainnet
@@ -22,8 +23,8 @@ contract aAnimal is ERC721Full, DefiNFTInterface {
     address public farm;
 
     mapping(uint => string) public names;
-    mapping(uint => uint) public amounts;
-    
+    mapping(uint => address) public keeper;
+
     constructor (address _farm) public ERC721Full('aAnimal', 'AAN') { 
         farm = _farm;
     }
@@ -52,7 +53,10 @@ contract aAnimal is ERC721Full, DefiNFTInterface {
 
         uint diff = IERC20(ADAI_ADDRESS).balanceOf(address(this)) - tokensBefore;
 
-        amounts[tokenId] = diff;
+        FundsKeeper fundsKeeper = new FundsKeeper();
+        IERC20(ADAI_ADDRESS).transfer(address(fundsKeeper), diff);
+
+        keeper[tokenId] = address(fundsKeeper);
         names[tokenId] = _name;
 
         return true;
@@ -62,15 +66,26 @@ contract aAnimal is ERC721Full, DefiNFTInterface {
         return names[_id];
     }
 
-    function burn(uint256 tokenId) public {
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721Burnable: caller is not owner nor approved");
+    function burn(uint256 _tokenId) public {
+        require(_isApprovedOrOwner(_msgSender(), _tokenId), "ERC721Burnable: caller is not owner nor approved");
 
         uint tokensBefore = IERC20(DAI_ADDRESS).balanceOf(address(this));
-        aTokenInterface(ADAI_ADDRESS).redeem(amounts[tokenId]);
+
+        FundsKeeper(keeper[_tokenId]).withdrawTokens(ADAI_ADDRESS);
+        aTokenInterface(ADAI_ADDRESS).redeem(getBalance(_tokenId));
         uint diff = IERC20(DAI_ADDRESS).balanceOf(address(this)) - tokensBefore;
 
         IERC20(DAI_ADDRESS).transfer(_msgSender(), diff);
 
-        _burn(tokenId);
+        _burn(_tokenId);
     }
+
+    function getBalance(uint _tokenId) public returns(uint) {
+        return IERC20(ADAI_ADDRESS).balanceOf(keeper[_tokenId]);
+    }
+
+    function getTokenData(uint _tokenId) public returns(string memory, uint) {
+        return (names[_tokenId], getBalance(_tokenId)); 
+    }
+    
 }

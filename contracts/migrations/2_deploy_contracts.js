@@ -2,6 +2,7 @@ const aAnimal = artifacts.require("./aAnimal.sol");
 const bAnimal = artifacts.require("./bAnimal.sol");
 const DefiFarm = artifacts.require("./DefiFarm.sol");
 const OasisWrapper = artifacts.require("./OasisWrapper.sol");
+const KyberWrapper = artifacts.require("./KyberWrapper.sol");
 
 require('dotenv').config();
 
@@ -17,8 +18,8 @@ module.exports = function(deployer, network, accounts) {
         let first = await aAnimal.deployed();
         await defiFarm.addToken(first.address, '10000000000000000');
 
-        await deployer.deploy(OasisWrapper, {gas: 4000000, overwrite: deployAgain});
-        let wrapper = await OasisWrapper.deployed();
+        await deployer.deploy(KyberWrapper, {gas: 4000000, overwrite: deployAgain});
+        let wrapper = await KyberWrapper.deployed();
 
         await deployer.deploy(bAnimal, defiFarm.address, wrapper.address, {gas: 6000000, overwrite: deployAgain})
         let second = await bAnimal.deployed();

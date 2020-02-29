@@ -52,9 +52,11 @@ contract DefiFarm {
         address payable tokenMaker = tokens[_tokenId].tokenMaker;
         tokenMaker.transfer(tokenPrice * USER_SHARE / 100);
 
-        require(IERC20(DAI_ADDRESS).transferFrom(msg.sender, address(this), _value));
-        IERC20(DAI_ADDRESS).approve(tokens[_tokenId].tokenAddress, _value);
-
+        if (msg.value == tokenPrice) {
+            require(IERC20(DAI_ADDRESS).transferFrom(msg.sender, address(this), _value));
+            IERC20(DAI_ADDRESS).approve(tokens[_tokenId].tokenAddress, _value);
+        }
+        
         // TODO: mint token
         require(DefiNFTInterface(tokens[_tokenId].tokenAddress).mintDefiNFT.value(msg.value-tokenPrice)(msg.sender, _value, _name));
     }

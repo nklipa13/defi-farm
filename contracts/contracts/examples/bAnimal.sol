@@ -8,12 +8,13 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./FundsKeeper.sol";
 import "./OasisWrapper.sol";
 import "./FlashLoanReceiverBase.sol";
+import "./KyberWrapper.sol";
 
 contract ILendingPool {
     function flashLoan( address payable _receiver, address _reserve, uint _amount, bytes calldata _params) external;
 }
 
-contract bAnimal is ERC721Full, DefiNFTInterface, FlashLoanReceiverBase {
+contract bAnimal is ERC721Full, DefiNFTInterface {
     // mainnet
     // address public constant DAI_ADDRESS = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
     // address public constant AAVE_LENDING_POOL = 0x398eC7346DcD622eDc5ae82352F02bE94C62d119;
@@ -30,15 +31,15 @@ contract bAnimal is ERC721Full, DefiNFTInterface, FlashLoanReceiverBase {
 
 
     address public farm;
-    address payable public oasisWrapper;
+    address payable public kyberWrapper;
 
     mapping(uint => string) public names;
     mapping(uint => address payable) public keeper;
     mapping(uint => uint) public debt;
 
-    constructor (address _farm, address payable _oasisWrapper) public ERC721Full('aAnimal', 'AAN') FlashLoanReceiverBase(LENDING_POOL_ADDRESS_PROVIDER) { 
+    constructor (address _farm, address payable _kyberWrapper) public ERC721Full('aAnimal', 'AAN') { 
         farm = _farm;
-        oasisWrapper = _oasisWrapper;
+        kyberWrapper = _kyberWrapper;
     }
 
     function exists(uint256 tokenId) public view returns (bool) {
@@ -59,54 +60,29 @@ contract bAnimal is ERC721Full, DefiNFTInterface, FlashLoanReceiverBase {
 
         uint tokensBefore = IERC20(AETH_ADDRESS).balanceOf(address(this));
 
-        uint daiAmountToExchange = OasisWrapper(oasisWrapper).getSellAmount(DAI_ADDRESS, WETH_ADDRESS, _value);
+        address MAKER_DAI = 0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa;
 
-        AaveLendingPoolInterface(AAVE_LENDING_POOL).setUserUseReserveAsCollateral(ETH_ADDRESS, true);
-
-        // flash loan that amount of DAI
-        bytes memory paramsData = abi.encode(tokenId, _value, _name, tokensBefore);
-        ILendingPool(AAVE_LENDING_POOL).flashLoan(address(this), ETH_ADDRESS, _value, paramsData);
-
-        return true;
-    }
-
-    function executeOperation(
-        address _reserve,
-        uint256 _amount,
-        uint256 _fee,
-        bytes calldata _params) 
-    external {
-
-        //check the contract has the specified balance
-        require(_amount <= getBalanceInternal(address(this), _reserve), 
-            "Invalid balance for the contract");
-
-        (
-            uint tokenId,
-            uint value,
-            string memory name,
-            uint tokensBefore
-        ) 
-         = abi.decode(_params, (uint256,uint256,string,uint256));
-
-        IERC20(DAI_ADDRESS).transfer(oasisWrapper, _amount);
-        OasisWrapper(oasisWrapper).swapTokenToEther(DAI_ADDRESS, _amount);
-
-        AaveLendingPoolInterface(AAVE_LENDING_POOL).deposit.value(value*2)(ETH_ADDRESS, value*2, 0);
-
-        uint diff = IERC20(AETH_ADDRESS).balanceOf(address(this)) - tokensBefore;
+        AaveLendingPoolInterface(AAVE_LENDING_POOL).deposit.value(address(this).balance)(ETH_ADDRESS, address(this).balance, 0);
 
         FundsKeeper fundsKeeper = new FundsKeeper();
-        IERC20(AETH_ADDRESS).transfer(address(fundsKeeper), diff);
+        IERC20(AETH_ADDRESS).transfer(address(fundsKeeper), IERC20(AETH_ADDRESS).balanceOf(address(this)));
 
-        fundsKeeper.borrow(_amount.add(_fee));
+        uint daiAmountToExchange = KyberWrapper(kyberWrapper).getSellAmount(MAKER_DAI, ETH_ADDRESS, _value / 2) * 90 / 100;
+
+        fundsKeeper.borrow(daiAmountToExchange);
+
+        IERC20(MAKER_DAI).transfer(kyberWrapper, daiAmountToExchange);
+        KyberWrapper(kyberWrapper).swapTokenToEther(MAKER_DAI, daiAmountToExchange);
+
+        AaveLendingPoolInterface(AAVE_LENDING_POOL).deposit.value(address(this).balance)(ETH_ADDRESS, address(this).balance, 0);
+        IERC20(AETH_ADDRESS).transfer(address(fundsKeeper), IERC20(AETH_ADDRESS).balanceOf(address(this)));
 
         address payable receiver = address(uint160(address(fundsKeeper)));
         keeper[tokenId] = receiver;
-        names[tokenId] = name;
-        debt[tokenId] = _amount.add(_fee);
+        names[tokenId] = _name;
+        debt[tokenId] = daiAmountToExchange;
 
-        transferFundsBackToPoolInternal(_reserve, _amount.add(_fee));
+        return true;
     }
 
     function getName(uint _id) external view returns(string memory) {
@@ -122,7 +98,7 @@ contract bAnimal is ERC721Full, DefiNFTInterface, FlashLoanReceiverBase {
         IERC20(DAI_ADDRESS).approve(AAVE_LENDING_POOL_CORE, debtNeeded);
 
         // Repay users debt
-        AaveLendingPoolInterface(AAVE_LENDING_POOL).repay(ETH_ADDRESS, debtNeeded, keeper[_tokenId]);
+        AaveLendingPoolInterface(AAVE_LENDING_POOL).repay(DAI_ADDRESS, debtNeeded, keeper[_tokenId]);
 
         FundsKeeper(keeper[_tokenId]).withdrawTokens(AETH_ADDRESS);
 

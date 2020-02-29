@@ -26,6 +26,8 @@ contract FundsKeeper {
 	function borrow(uint _amount) public {
 		require(msg.sender == owner);
 
+		AaveLendingPoolInterface(AAVE_LENDING_POOL).setUserUseReserveAsCollateral(ETH_ADDRESS, true);
+		
 		AaveLendingPoolInterface(AAVE_LENDING_POOL).borrow(DAI_ADDRESS, _amount, 1, 0);
 
 		IERC20(DAI_ADDRESS).transfer(msg.sender, IERC20(DAI_ADDRESS).balanceOf(address(this)));

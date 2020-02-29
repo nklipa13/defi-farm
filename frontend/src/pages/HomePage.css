@@ -1,0 +1,65 @@
+@font-face {
+    font-family: HK Grotesk;
+    src: url(../fonts/hk-grotesk/HKGrotesk-Light.otf);
+  }
+
+  @font-face {
+    font-family: HK Grotesk B;
+    src: url(../fonts/HKGrotesk-Bold.otf);
+  }
+
+body {
+}
+
+.container-flex {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.description-section {
+    font-family: HK Grotesk;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 156.8%;
+    /* or 24px */
+
+    letter-spacing: 0.01em;
+
+    color: #000000;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+}
+
+.profile-link {
+    margin-right: 50px;
+}
+
+.title-text {
+    font-family: HK Grotesk B;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 99.5%;
+    width: 517px;
+    /* identical to box height, or 80px */
+    color: #333333;
+}
+
+.page-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 30px 0px 30px 0px;
+}

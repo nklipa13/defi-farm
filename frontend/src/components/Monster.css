@@ -1,0 +1,68 @@
+
+
+.img-container {
+    display: flex;
+    width: 521px;
+    height: 451px;
+    left: 170px;
+    top: 243px;
+
+    background: #F1F8FF;
+    border-radius: 10px;
+
+    justify-content: center;
+}
+
+.form-input {
+    border-style: none none solid none;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    outline: none;
+
+    width: 180px;
+    padding-bottom: 10px;
+
+    margin-right: 30px;
+
+    color: #333333;
+}
+
+.buy-btn {
+    padding: 10px 40px;
+    background: #46B05D;
+    border-radius: 10px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    color: #FFFFFF;
+    outline: none;
+}
+
+.input-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+    margin-right: 20px;
+
+}
+
+.monster-desc {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+
+    margin: 20px 0px 20px 0px;
+
+    color: #B9B9B9;
+}

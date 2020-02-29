@@ -4,11 +4,12 @@ import getWeb3 from "../utils/getWeb3.js";
 
 import { Link } from 'react-router-dom'
 
-import { DefiFarm } from '../config.json';
-
+import { DefiFarm, Dai } from '../config.json';
 
 import monster1Img from '../images/monster1.png';
 import monster2Img from '../images/monster2.png';
+
+import Monster from "../components/Monster";
 
 class HomePage extends Component {
   
@@ -20,13 +21,12 @@ class HomePage extends Component {
             web3: null,
             networkId: '',
             defiFarmContract: null,
+            daiContract: null,
             m1Name: '',
             m1Value: 0,
             m2Name: '',
             m2Value: 0,
         };
-
-        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount = async () => {
@@ -38,12 +38,14 @@ class HomePage extends Component {
           const networkId = await web3.eth.net.getId();
 
           const defiFarmContract = new web3.eth.Contract(DefiFarm.abi, DefiFarm.networks[networkId].address);
+          const daiContract = new web3.eth.Contract(Dai.abi, Dai.networks[networkId].address);
 
           this.setState({
             web3,
             account: accounts[0],
             networkId,
             defiFarmContract,
+            daiContract
            });
 
         } catch(err) {
@@ -51,36 +53,9 @@ class HomePage extends Component {
         }
     }
 
-    handleChange(e) {
-        this.setState({
-          [e.target.name]: e.target.value,
-        });
-    }
-
-    async buy(tokenId) {
-        console.log('Buy: ', tokenId);
-
-        let name;
-        let value;
-        const tokenInfo = await this.state.defiFarmContract.methods.tokens(tokenId).call();
-
-        if (tokenId === 0) {
-            name = this.state.m1Name;
-            value = this.state.m1Value;
-        } else {
-            name = this.state.m2Name;
-            value = this.state.m2Value;
-        }
-
-        await this.state.defiFarmContract.methods.buyToken(tokenId, value, name).send({
-            from: this.state.account,
-            value: tokenInfo[0]
-        })
-    }
-
     render() {
 
-        const { m1Name, m1Value, m2Name, m2Value } = this.state;
+        const { defiFarmContract, account, daiContract } = this.state;
 
         return (
             <div>
@@ -93,59 +68,25 @@ class HomePage extends Component {
 
                     <div className="body-section row">
                         <div className="first-section col-lg-6">
-                            <div>
-                                <img src={monster1Img} alt="monster1" width="300" height="390" />
-
-                                <div className="input-section">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="m1Name"
-                                        onChange={this.handleChange}
-                                        placeholder="Name"
-                                        value={m1Name}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        name="m1Value"
-                                        onChange={this.handleChange}
-                                        placeholder="Name"
-                                        value={m1Value}
-                                    />
-                                </div>
-
-                                <button type="button" className="btn btn-primary" onClick={() => this.buy(0)}>Buy</button>
-                            </div>
+                            <Monster 
+                                img={monster1Img} 
+                                tokenId="0" 
+                                contract={defiFarmContract} 
+                                account={account}
+                                daiContract={daiContract}
+                                >
+                            </Monster>
                         </div>
 
                         <div className="second-section col-lg-6">
-                            <div>
-                                <img src={monster2Img} alt="monster2" width="300" height="390" />
-
-                                <div className="input-section">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="m2Name"
-                                        onChange={this.handleChange}
-                                        placeholder="Name"
-                                        value={m2Name}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        name="m2Value"
-                                        onChange={this.handleChange}
-                                        placeholder="Name"
-                                        value={m2Value}
-                                    />
-                                </div>
-
-                                <button type="button" className="btn btn-primary" onClick={() => this.buy(1)}>Buy</button>
-                            </div>
+                            <Monster 
+                                img={monster2Img} 
+                                tokenId="1" 
+                                contract={defiFarmContract} 
+                                account={account}
+                                daiContract={daiContract}
+                            >
+                            </Monster>
                         </div>
                     </div>
 

@@ -11,6 +11,8 @@ import monster2Img from '../images/monster2.png';
 
 import Monster from "../components/Monster";
 
+import "./HomePage.css";
+
 class HomePage extends Component {
   
     constructor(je) {
@@ -58,16 +60,19 @@ class HomePage extends Component {
         const { defiFarmContract, account, daiContract } = this.state;
 
         return (
-            <div>
-                <div className="container main-container">
+            <div className="container-flex">
+                <div className="page-layout">
                     <div className="title-section">
-                        <h1>Defi Farm</h1>
-
-                        <Link to='/profile'> Profile </Link>
+                        <div className="title-text">Defi Farm</div>
+                        <Link to='/profile' className="profile-link"> Profile </Link>
                     </div>
 
-                    <div className="body-section row">
-                        <div className="first-section col-lg-6">
+                    <div className='description-section'>
+                        Defi Farm - NFTs that work for you and help you manage your Defi positions, give someone bla gfd gdfkgndfng
+                    </div>
+
+                    <div className="body-section">
+                        <div className="first-section">
                             <Monster 
                                 img={monster1Img} 
                                 tokenId="0" 
@@ -78,7 +83,7 @@ class HomePage extends Component {
                             </Monster>
                         </div>
 
-                        <div className="second-section col-lg-6">
+                        <div className="second-section">
                             <Monster 
                                 img={monster2Img} 
                                 tokenId="1" 
@@ -88,10 +93,6 @@ class HomePage extends Component {
                             >
                             </Monster>
                         </div>
-                    </div>
-
-                    <div className="footer-section">
-                        Explanation
                     </div>
                 </div>
             </div>

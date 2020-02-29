@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "./Monster.css";
+
 class Monster extends Component {
 
     constructor(je) {
@@ -20,7 +22,7 @@ class Monster extends Component {
         const allowanceAmount = await daiContract.methods.allowance(account, contract._address).call();
 
         if (allowanceAmount / 1e18 < userValue) {
-            daiContract.methods.approve(contract._address, "900000000000000000000000000")
+            await daiContract.methods.approve(contract._address, "900000000000000000000000000")
                 .send({from: account});
         }
     }
@@ -35,7 +37,9 @@ class Monster extends Component {
 
         console.log('Buy: ', tokenInfo);
 
-        await contract.methods.buyToken(tokenId, value, name).send({
+        const weiValue = (value * 1e18).toString();
+
+        await contract.methods.buyToken(tokenId, weiValue, name).send({
             from: account,
             value: tokenInfo.price
         })
@@ -47,19 +51,20 @@ class Monster extends Component {
         });
     }
 
-
     render() {
         const { name, value } = this.state;
         const { img } = this.props;
 
         return (
             <div>
-                <img src={img} alt="monster1" width="300" height="390" />
+                <div className="img-container">
+                    <img src={img} alt="monster1" width="300" height="390" />
+                </div>
 
                 <div className="input-section">
                     <input
                         type="text"
-                        className="form-control"
+                        className="form-input"
                         name="name"
                         onChange={this.handleChange}
                         placeholder="Name"
@@ -68,7 +73,7 @@ class Monster extends Component {
 
                     <input
                         type="number"
-                        className="form-control"
+                        className="form-input"
                         name="value"
                         onChange={this.handleChange}
                         placeholder="Name"
@@ -76,7 +81,12 @@ class Monster extends Component {
                     />
                 </div>
 
-                <button type="button" className="btn btn-primary" onClick={() => this.buy()}>Buy</button>
+                <div className="monster-desc">
+                    Eum ea recusandae ducimus. Repellendus occaecati beatae sunt impedit ducimus. Dolores natus et alias.
+                    Sed velit non pariatur vel aut consequatur aut ut.
+                </div>
+
+                <button type="button" className="buy-btn" onClick={() => this.buy()}>Buy</button>
             </div>
         );
     }

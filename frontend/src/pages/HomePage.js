@@ -4,6 +4,8 @@ import getWeb3 from "../utils/getWeb3.js";
 
 import { Link } from 'react-router-dom'
 
+import { DefiFarm } from '../config.json';
+
 
 import monster1Img from '../images/monster1.png';
 import monster2Img from '../images/monster2.png';
@@ -17,6 +19,7 @@ class HomePage extends Component {
             account: null,
             web3: null,
             networkId: '',
+            defiFarmContract: null,
             m1Name: '',
             m1Value: 0,
             m2Name: '',
@@ -32,13 +35,15 @@ class HomePage extends Component {
 
           // Use web3 to get the user's accounts.
           const accounts = await web3.eth.getAccounts();
-    
           const networkId = await web3.eth.net.getId();
+
+          const defiFarmContract = new web3.eth.Contract(DefiFarm.abi, DefiFarm.networks[networkId].address);
 
           this.setState({
             web3,
             account: accounts[0],
             networkId,
+            defiFarmContract,
            });
 
         } catch(err) {
@@ -49,13 +54,28 @@ class HomePage extends Component {
     handleChange(e) {
         this.setState({
           [e.target.name]: e.target.value,
-          price: '0',
         });
     }
 
-    async buy(type) {
-        console.log('Buy: ', type);
+    async buy(tokenId) {
+        console.log('Buy: ', tokenId);
 
+        let name;
+        let value;
+        const tokenInfo = await this.state.defiFarmContract.methods.tokens(tokenId).call();
+
+        if (tokenId === 0) {
+            name = this.state.m1Name;
+            value = this.state.m1Value;
+        } else {
+            name = this.state.m2Name;
+            value = this.state.m2Value;
+        }
+
+        await this.state.defiFarmContract.methods.buyToken(tokenId, value, name).send({
+            from: this.state.account,
+            value: tokenInfo[0]
+        })
     }
 
     render() {
@@ -96,7 +116,7 @@ class HomePage extends Component {
                                     />
                                 </div>
 
-                                <button type="button" className="btn btn-primary" onClick={() => this.buy('monster1')}>Buy</button>
+                                <button type="button" className="btn btn-primary" onClick={() => this.buy(0)}>Buy</button>
                             </div>
                         </div>
 
@@ -124,7 +144,7 @@ class HomePage extends Component {
                                     />
                                 </div>
 
-                                <button type="button" className="btn btn-primary" onClick={() => this.buy('monster2')}>Buy</button>
+                                <button type="button" className="btn btn-primary" onClick={() => this.buy(1)}>Buy</button>
                             </div>
                         </div>
                     </div>

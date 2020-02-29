@@ -1,3 +1,13 @@
 {
-  
+  "DefiFarm": {
+    "abi": [{"constant":true,"inputs":[],"name":"count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"tokens","outputs":[{"name":"tokenAddress","type":"address"},{"name":"price","type":"uint256"},{"name":"tokenMaker","type":"address"},{"name":"exists","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"USER_SHARE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenAddress","type":"address"},{"name":"_price","type":"uint256"}],"name":"addToken","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"},{"name":"_value","type":"uint256"},{"name":"_name","type":"string"}],"name":"buyToken","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_id","type":"uint256"}],"name":"removeToken","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_share","type":"uint256"}],"name":"changeMakerShare","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
+    "networks": {
+      "1": {
+        "address": ""
+      },
+      "42": {
+        "address": ""
+      }
+    }
+  }
 }

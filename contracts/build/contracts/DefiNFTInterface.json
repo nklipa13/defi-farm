@@ -24,8 +24,8 @@
           "type": "bool"
         }
       ],
-      "payable": false,
-      "stateMutability": "nonpayable",
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -48,25 +48,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_user\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"mintDefiNFT\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"getName\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":\"DefiNFTInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":{\"keccak256\":\"0x0d9b7dd2292810aba865a8a34be57737276b9c93695ae11ad405e92ece294d2a\",\"urls\":[\"bzzr://3b0b6159da70577e0e6083a192128835f1b25fe061456b5e24b561c4f629eace\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_user\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"mintDefiNFT\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"getName\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":\"DefiNFTInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol\":{\"keccak256\":\"0xce57ccd019ae7c2cd2c62525492a77a1c795629b8f378a7b9f9577303b91dd54\",\"urls\":[\"bzzr://66375b08ceff21b6a8316160bba889c9d3744997f1f5da37e503eb84e6a66c1a\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.0;\n\ninterface DefiNFTInterface {\n\n    function mintDefiNFT(address _user, uint _value, string calldata _name) external returns(bool);\n    function getName(uint _id) external view returns(string memory);\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\ninterface DefiNFTInterface {\n\n    function mintDefiNFT(address _user, uint _value, string calldata _name) external payable returns(bool);\n    function getName(uint _id) external view returns(string memory);\n}\n",
   "sourcePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
   "ast": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        197
+        215
       ]
     },
-    "id": 198,
+    "id": 216,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 178,
+        "id": 196,
         "literals": [
           "solidity",
           "^",
@@ -82,9 +82,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 197,
+        "id": 215,
         "linearizedBaseContracts": [
-          197
+          215
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -92,22 +92,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 189,
+            "id": 207,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 185,
+              "id": 203,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 180,
+                  "id": 198,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "80:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -116,7 +116,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 179,
+                    "id": 197,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "80:7:1",
@@ -131,10 +131,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 182,
+                  "id": 200,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "95:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -143,7 +143,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 181,
+                    "id": 199,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "95:4:1",
@@ -157,10 +157,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 184,
+                  "id": 202,
                   "name": "_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "108:21:1",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -169,7 +169,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 183,
+                    "id": 201,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "108:6:1",
@@ -185,16 +185,16 @@
               "src": "79:51:1"
             },
             "returnParameters": {
-              "id": 188,
+              "id": 206,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 187,
+                  "id": 205,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
-                  "src": "148:4:1",
+                  "scope": 207,
+                  "src": "156:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -202,10 +202,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 186,
+                    "id": 204,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:4:1",
+                    "src": "156:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -215,34 +215,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "147:6:1"
+              "src": "155:6:1"
             },
-            "scope": 197,
-            "src": "59:95:1",
-            "stateMutability": "nonpayable",
+            "scope": 215,
+            "src": "59:103:1",
+            "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 196,
+            "id": 214,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getName",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 192,
+              "id": 210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 191,
+                  "id": 209,
                   "name": "_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 196,
-                  "src": "176:8:1",
+                  "scope": 214,
+                  "src": "184:8:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -250,10 +250,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 190,
+                    "id": 208,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "176:4:1",
+                    "src": "184:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -263,19 +263,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "175:10:1"
+              "src": "183:10:1"
             },
             "returnParameters": {
-              "id": 195,
+              "id": 213,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 194,
+                  "id": 212,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 196,
-                  "src": "208:13:1",
+                  "scope": 214,
+                  "src": "216:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -283,10 +283,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 193,
+                    "id": 211,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "208:6:1",
+                    "src": "216:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -296,33 +296,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "207:15:1"
+              "src": "215:15:1"
             },
-            "scope": 197,
-            "src": "159:64:1",
+            "scope": 215,
+            "src": "167:64:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 198,
-        "src": "25:200:1"
+        "scope": 216,
+        "src": "25:208:1"
       }
     ],
-    "src": "0:226:1"
+    "src": "0:234:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/DefiNFTInterface.sol",
     "exportedSymbols": {
       "DefiNFTInterface": [
-        197
+        215
       ]
     },
-    "id": 198,
+    "id": 216,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 178,
+        "id": 196,
         "literals": [
           "solidity",
           "^",
@@ -338,9 +338,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 197,
+        "id": 215,
         "linearizedBaseContracts": [
-          197
+          215
         ],
         "name": "DefiNFTInterface",
         "nodeType": "ContractDefinition",
@@ -348,22 +348,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 189,
+            "id": 207,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintDefiNFT",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 185,
+              "id": 203,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 180,
+                  "id": 198,
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "80:13:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -372,7 +372,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 179,
+                    "id": 197,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "80:7:1",
@@ -387,10 +387,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 182,
+                  "id": 200,
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "95:11:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -399,7 +399,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 181,
+                    "id": 199,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "95:4:1",
@@ -413,10 +413,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 184,
+                  "id": 202,
                   "name": "_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
+                  "scope": 207,
                   "src": "108:21:1",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -425,7 +425,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 183,
+                    "id": 201,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "108:6:1",
@@ -441,16 +441,16 @@
               "src": "79:51:1"
             },
             "returnParameters": {
-              "id": 188,
+              "id": 206,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 187,
+                  "id": 205,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 189,
-                  "src": "148:4:1",
+                  "scope": 207,
+                  "src": "156:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -458,10 +458,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 186,
+                    "id": 204,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:4:1",
+                    "src": "156:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -471,34 +471,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "147:6:1"
+              "src": "155:6:1"
             },
-            "scope": 197,
-            "src": "59:95:1",
-            "stateMutability": "nonpayable",
+            "scope": 215,
+            "src": "59:103:1",
+            "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 196,
+            "id": 214,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getName",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 192,
+              "id": 210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 191,
+                  "id": 209,
                   "name": "_id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 196,
-                  "src": "176:8:1",
+                  "scope": 214,
+                  "src": "184:8:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -506,10 +506,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 190,
+                    "id": 208,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "176:4:1",
+                    "src": "184:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -519,19 +519,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "175:10:1"
+              "src": "183:10:1"
             },
             "returnParameters": {
-              "id": 195,
+              "id": 213,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 194,
+                  "id": 212,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 196,
-                  "src": "208:13:1",
+                  "scope": 214,
+                  "src": "216:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -539,10 +539,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 193,
+                    "id": 211,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "208:6:1",
+                    "src": "216:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -552,20 +552,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "207:15:1"
+              "src": "215:15:1"
             },
-            "scope": 197,
-            "src": "159:64:1",
+            "scope": 215,
+            "src": "167:64:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 198,
-        "src": "25:200:1"
+        "scope": 216,
+        "src": "25:208:1"
       }
     ],
-    "src": "0:226:1"
+    "src": "0:234:1"
   },
   "compiler": {
     "name": "solc",
@@ -573,7 +573,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-29T11:04:19.548Z",
+  "updatedAt": "2020-02-29T14:19:20.662Z",
   "devdoc": {
     "methods": {}
   },

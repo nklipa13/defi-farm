@@ -19,30 +19,96 @@
       ],
       "name": "deposit",
       "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_reserve",
+          "type": "address"
+        },
+        {
+          "name": "_useAsCollateral",
+          "type": "bool"
+        }
+      ],
+      "name": "setUserUseReserveAsCollateral",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_reserve",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "name": "_interestRateMode",
+          "type": "uint256"
+        },
+        {
+          "name": "_referralCode",
+          "type": "uint16"
+        }
+      ],
+      "name": "borrow",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_reserve",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "name": "_onBehalfOf",
+          "type": "address"
+        }
+      ],
+      "name": "repay",
+      "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"},{\"name\":\"_amount\",\"type\":\"uint256\"},{\"name\":\"_referralCode\",\"type\":\"uint16\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol\":\"AaveLendingPoolInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol\":{\"keccak256\":\"0x736b39aed4e07eef3a1cae9b0914d18d36c60cfb9eed80aa8bbbe81bf6c53f1a\",\"urls\":[\"bzzr://e7d989171ceb133d06f239a3dd88bb18ef1f3e314b60700e9b1e9dff22e26c1c\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060b78061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063d2d0e06614602d575b600080fd5b608460048036036060811015604157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803561ffff1690602001909291905050506086565b005b50505056fea165627a7a72305820bec28dfb0155225fd3f9dba6fa3c815ef4323bf31c74871b2c5a47d60b9760320029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063d2d0e06614602d575b600080fd5b608460048036036060811015604157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803561ffff1690602001909291905050506086565b005b50505056fea165627a7a72305820bec28dfb0155225fd3f9dba6fa3c815ef4323bf31c74871b2c5a47d60b9760320029",
-  "sourceMap": "25:126:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:126:3;;;;;;;",
-  "deployedSourceMap": "25:126:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:126:3;;;;;;;;;;;;;;;;;;;64:85;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;64:85:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract AaveLendingPoolInterface {\n\t\n\tfunction deposit(address _reserve, uint256 _amount, uint16 _referralCode) external {}\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.7+commit.6da8b019\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"},{\"name\":\"_useAsCollateral\",\"type\":\"bool\"}],\"name\":\"setUserUseReserveAsCollateral\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"},{\"name\":\"_amount\",\"type\":\"uint256\"},{\"name\":\"_onBehalfOf\",\"type\":\"address\"}],\"name\":\"repay\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"},{\"name\":\"_amount\",\"type\":\"uint256\"},{\"name\":\"_interestRateMode\",\"type\":\"uint256\"},{\"name\":\"_referralCode\",\"type\":\"uint16\"}],\"name\":\"borrow\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"},{\"name\":\"_amount\",\"type\":\"uint256\"},{\"name\":\"_referralCode\",\"type\":\"uint16\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol\":\"AaveLendingPoolInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol\":{\"keccak256\":\"0xb2dca2ae460f4cabf16d7d7fb4fa18c2395102590e2439e28178896eff0c7f75\",\"urls\":[\"bzzr://44546a9ba6a5e9b674d6ed8c2f16d4f1e3bb1265e55349b026e080bf61dddd1f\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061022b806100206000396000f3fe60806040526004361061003f5760003560e01c80635a3b74b9146100445780635ceae9c4146100a1578063c858f5f91461011c578063d2d0e0661461018f575b600080fd5b34801561005057600080fd5b5061009f6004803603604081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035151590602001909291905050506101eb565b005b3480156100ad57600080fd5b5061011a600480360360608110156100c457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101ef565b005b34801561012857600080fd5b5061018d6004803603608081101561013f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803561ffff1690602001909291905050506101f4565b005b6101e9600480360360608110156101a557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803561ffff1690602001909291905050506101fa565b005b5050565b505050565b50505050565b50505056fea165627a7a72305820119d26adcf772ec1e985e72acd59f1bfa3f9e6ad680551ead01b101cc8aedb4b0029",
+  "deployedBytecode": "0x60806040526004361061003f5760003560e01c80635a3b74b9146100445780635ceae9c4146100a1578063c858f5f91461011c578063d2d0e0661461018f575b600080fd5b34801561005057600080fd5b5061009f6004803603604081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035151590602001909291905050506101eb565b005b3480156100ad57600080fd5b5061011a600480360360608110156100c457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101ef565b005b34801561012857600080fd5b5061018d6004803603608081101561013f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803561ffff1690602001909291905050506101f4565b005b6101e9600480360360608110156101a557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803561ffff1690602001909291905050506101fa565b005b5050565b505050565b50505050565b50505056fea165627a7a72305820119d26adcf772ec1e985e72acd59f1bfa3f9e6ad680551ead01b101cc8aedb4b0029",
+  "sourceMap": "25:433:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:433:3;;;;;;;",
+  "deployedSourceMap": "25:433:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;159:91;;8:9:-1;5:2;;;30:1;27;20:12;5:2;159:91:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;159:91:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;365;;8:9:-1;5:2;;;30:1;27;20:12;5:2;365:91:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;365:91:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;252:111;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:111:3;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;252:111:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;64:93;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;64:93:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;159:91;;;:::o;365:::-;;;;:::o;252:111::-;;;;;:::o;64:93::-;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract AaveLendingPoolInterface {\n\t\n\tfunction deposit(address _reserve, uint256 _amount, uint16 _referralCode) external payable {}\n\tfunction setUserUseReserveAsCollateral(address _reserve, bool _useAsCollateral) external {}\n\tfunction borrow(address _reserve, uint256 _amount, uint256 _interestRateMode, uint16 _referralCode) external {}\n\tfunction repay( address _reserve, uint256 _amount, address payable _onBehalfOf) external {}\n}",
   "sourcePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol",
   "ast": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol",
     "exportedSymbols": {
       "AaveLendingPoolInterface": [
-        247
+        295
       ]
     },
-    "id": 248,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 236,
+        "id": 254,
         "literals": [
           "solidity",
           "^",
@@ -58,37 +124,37 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 247,
+        "id": 295,
         "linearizedBaseContracts": [
-          247
+          295
         ],
         "name": "AaveLendingPoolInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 245,
+              "id": 263,
               "nodeType": "Block",
-              "src": "147:2:3",
+              "src": "155:2:3",
               "statements": []
             },
             "documentation": null,
-            "id": 246,
+            "id": 264,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 243,
+              "id": 261,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 238,
+                  "id": 256,
                   "name": "_reserve",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "81:16:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -97,7 +163,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 237,
+                    "id": 255,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "81:7:3",
@@ -112,10 +178,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 240,
+                  "id": 258,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "99:15:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -124,7 +190,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 239,
+                    "id": 257,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "99:7:3",
@@ -138,10 +204,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 242,
+                  "id": 260,
                   "name": "_referralCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "116:20:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -150,7 +216,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 241,
+                    "id": 259,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "116:6:3",
@@ -166,36 +232,373 @@
               "src": "80:57:3"
             },
             "returnParameters": {
-              "id": 244,
+              "id": 262,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "147:0:3"
+              "src": "155:0:3"
             },
-            "scope": 247,
-            "src": "64:85:3",
+            "scope": 295,
+            "src": "64:93:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 271,
+              "nodeType": "Block",
+              "src": "248:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 272,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setUserUseReserveAsCollateral",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 269,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 266,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 272,
+                  "src": "198:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 265,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 268,
+                  "name": "_useAsCollateral",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 272,
+                  "src": "216:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "216:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:41:3"
+            },
+            "returnParameters": {
+              "id": 270,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "248:0:3"
+            },
+            "scope": 295,
+            "src": "159:91:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 283,
+              "nodeType": "Block",
+              "src": "361:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 284,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "borrow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 281,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 274,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "268:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 273,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "268:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 276,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "286:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 275,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 278,
+                  "name": "_interestRateMode",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "303:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 277,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "303:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 280,
+                  "name": "_referralCode",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "330:20:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 279,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "330:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "267:84:3"
+            },
+            "returnParameters": {
+              "id": 282,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "361:0:3"
+            },
+            "scope": 295,
+            "src": "252:111:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 293,
+              "nodeType": "Block",
+              "src": "454:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 294,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "repay",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 291,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 286,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "381:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 285,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "381:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 288,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "399:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 287,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 290,
+                  "name": "_onBehalfOf",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "416:27:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 289,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "416:15:3",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "379:65:3"
+            },
+            "returnParameters": {
+              "id": 292,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "454:0:3"
+            },
+            "scope": 295,
+            "src": "365:91:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 248,
-        "src": "25:126:3"
+        "scope": 296,
+        "src": "25:433:3"
       }
     ],
-    "src": "0:151:3"
+    "src": "0:458:3"
   },
   "legacyAST": {
     "absolutePath": "/Users/nikolaklipa/Decenter/defi-farm/contracts/contracts/examples/AaveLendingPoolInterface.sol",
     "exportedSymbols": {
       "AaveLendingPoolInterface": [
-        247
+        295
       ]
     },
-    "id": 248,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 236,
+        "id": 254,
         "literals": [
           "solidity",
           "^",
@@ -211,37 +614,37 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 247,
+        "id": 295,
         "linearizedBaseContracts": [
-          247
+          295
         ],
         "name": "AaveLendingPoolInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 245,
+              "id": 263,
               "nodeType": "Block",
-              "src": "147:2:3",
+              "src": "155:2:3",
               "statements": []
             },
             "documentation": null,
-            "id": 246,
+            "id": 264,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 243,
+              "id": 261,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 238,
+                  "id": 256,
                   "name": "_reserve",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "81:16:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -250,7 +653,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 237,
+                    "id": 255,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "81:7:3",
@@ -265,10 +668,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 240,
+                  "id": 258,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "99:15:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -277,7 +680,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 239,
+                    "id": 257,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "99:7:3",
@@ -291,10 +694,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 242,
+                  "id": 260,
                   "name": "_referralCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 246,
+                  "scope": 264,
                   "src": "116:20:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -303,7 +706,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 241,
+                    "id": 259,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "116:6:3",
@@ -319,23 +722,360 @@
               "src": "80:57:3"
             },
             "returnParameters": {
-              "id": 244,
+              "id": 262,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "147:0:3"
+              "src": "155:0:3"
             },
-            "scope": 247,
-            "src": "64:85:3",
+            "scope": 295,
+            "src": "64:93:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 271,
+              "nodeType": "Block",
+              "src": "248:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 272,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setUserUseReserveAsCollateral",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 269,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 266,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 272,
+                  "src": "198:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 265,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 268,
+                  "name": "_useAsCollateral",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 272,
+                  "src": "216:21:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "216:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:41:3"
+            },
+            "returnParameters": {
+              "id": 270,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "248:0:3"
+            },
+            "scope": 295,
+            "src": "159:91:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 283,
+              "nodeType": "Block",
+              "src": "361:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 284,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "borrow",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 281,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 274,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "268:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 273,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "268:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 276,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "286:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 275,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 278,
+                  "name": "_interestRateMode",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "303:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 277,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "303:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 280,
+                  "name": "_referralCode",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 284,
+                  "src": "330:20:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 279,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "330:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "267:84:3"
+            },
+            "returnParameters": {
+              "id": 282,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "361:0:3"
+            },
+            "scope": 295,
+            "src": "252:111:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 293,
+              "nodeType": "Block",
+              "src": "454:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 294,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "repay",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 291,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 286,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "381:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 285,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "381:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 288,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "399:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 287,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 290,
+                  "name": "_onBehalfOf",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 294,
+                  "src": "416:27:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 289,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "416:15:3",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "379:65:3"
+            },
+            "returnParameters": {
+              "id": 292,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "454:0:3"
+            },
+            "scope": 295,
+            "src": "365:91:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 248,
-        "src": "25:126:3"
+        "scope": 296,
+        "src": "25:433:3"
       }
     ],
-    "src": "0:151:3"
+    "src": "0:458:3"
   },
   "compiler": {
     "name": "solc",
@@ -343,7 +1083,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-29T11:32:04.322Z",
+  "updatedAt": "2020-02-29T19:29:01.612Z",
   "devdoc": {
     "methods": {}
   },

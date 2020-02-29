@@ -37,8 +37,9 @@ contract aAnimal is ERC721Full, DefiNFTInterface {
         return _tokensOfOwner(owner);
     }
 
-    function mintDefiNFT(address _user, uint _value, string calldata _name) external returns(bool) {
+    function mintDefiNFT(address _user, uint _value, string calldata _name) external payable returns(bool) {
         require(msg.sender == farm);
+        require(msg.value == 0);
         
         uint tokenId = totalSupply();
         
@@ -72,19 +73,21 @@ contract aAnimal is ERC721Full, DefiNFTInterface {
         uint tokensBefore = IERC20(DAI_ADDRESS).balanceOf(address(this));
 
         FundsKeeper(keeper[_tokenId]).withdrawTokens(ADAI_ADDRESS);
-        aTokenInterface(ADAI_ADDRESS).redeem(getBalance(_tokenId));
-        uint diff = IERC20(DAI_ADDRESS).balanceOf(address(this)) - tokensBefore;
+
+        uint balance = IERC20(ADAI_ADDRESS).balanceOf(address(this));
+        aTokenInterface(ADAI_ADDRESS).redeem(balance);
+        uint diff = IERC20(DAI_ADDRESS).balanceOf(address(this));
 
         IERC20(DAI_ADDRESS).transfer(_msgSender(), diff);
 
         _burn(_tokenId);
     }
 
-    function getBalance(uint _tokenId) public returns(uint) {
+    function getBalance(uint _tokenId) public view returns(uint) {
         return IERC20(ADAI_ADDRESS).balanceOf(keeper[_tokenId]);
     }
 
-    function getTokenData(uint _tokenId) public returns(string memory, uint) {
+    function getTokenData(uint _tokenId) public view returns(string memory, uint) {
         return (names[_tokenId], getBalance(_tokenId)); 
     }
     
